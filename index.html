@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyline Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-top">
+        <h1 class="logo">Skyline</h1>
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <span class="theme-icon sun" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+            </svg>
+          </span>
+          <span class="theme-icon moon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <form class="search-form" id="searchForm">
+        <input
+          type="text"
+          class="search-input"
+          id="searchInput"
+          placeholder="Search city..."
+          autocomplete="off"
+          aria-label="Search for a city"
+        >
+        <button type="submit" class="search-btn" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+      </form>
+    </header>
+
+    <main class="main">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Fetching weather...</p>
+      </div>
+
+      <div class="error-message" id="errorMessage" role="alert">
+        <span class="error-icon">!</span>
+        <p id="errorText">Could not load weather. Try another city.</p>
+      </div>
+
+      <section class="weather-current" id="weatherCurrent">
+        <div class="location">
+          <span class="city-name" id="cityName">—</span>
+          <span class="country" id="country">—</span>
+        </div>
+        <div class="current-temp-wrap">
+          <span class="current-temp" id="currentTemp">—</span>
+          <span class="temp-unit">°C</span>
+        </div>
+        <p class="weather-desc" id="weatherDesc">—</p>
+        <div class="weather-icon-wrap" id="weatherIconWrap">
+          <span class="weather-emoji" id="weatherEmoji">☀️</span>
+        </div>
+        <ul class="current-details" id="currentDetails">
+          <li>
+            <span class="detail-label">Feels like</span>
+            <span class="detail-value" id="feelsLike">—°</span>
+          </li>
+          <li>
+            <span class="detail-label">Humidity</span>
+            <span class="detail-value" id="humidity">—%</span>
+          </li>
+          <li>
+            <span class="detail-label">Wind</span>
+            <span class="detail-value" id="windSpeed">— km/h</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="forecast" id="forecast">
+        <h2 class="forecast-title">Next 7 days</h2>
+        <ul class="forecast-list" id="forecastList"></ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
